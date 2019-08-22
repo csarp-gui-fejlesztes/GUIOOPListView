@@ -25,6 +25,13 @@ namespace ListViewDynamically
 
             this.Size = new Size(1024, 768);
 
+            lv.Columns.Add("Név");
+            lv.Columns.Add("Típus");
+            lv.Columns.Add("Életkor");
+            lv.Columns[0].Width = 320;
+            lv.Columns[1].Width = 180;
+            lv.Columns[2].Width = 140;
+
             Controls.Add(lv);
         }
     }
