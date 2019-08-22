@@ -13,6 +13,8 @@ namespace ListViewDynamically
     public partial class Form1 : Form
     {
         ListView lv;
+        TextBox eredmenyTextBox;
+
         public Form1()
         {
             InitializeComponent();
@@ -42,6 +44,11 @@ namespace ListViewDynamically
             lv.Items.Add(lvi2);
 
             lv.GridLines = true;
+
+            eredmenyTextBox = new TextBox();
+            eredmenyTextBox.Location = new Point(12, 600);
+            eredmenyTextBox.Size = new Size(600,12);
+            Controls.Add(eredmenyTextBox);
 
             Controls.Add(lv);
         }
