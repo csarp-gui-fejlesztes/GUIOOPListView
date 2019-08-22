@@ -38,6 +38,11 @@ namespace ListViewDynamically
             lvi.SubItems.Add("9");
             lv.Items.Add(lvi);
 
+            ListViewItem lvi2 = new ListViewItem(new string[] { "Buksi", "kutya", "11" });
+            lv.Items.Add(lvi2);
+
+            lv.GridLines = true;
+
             Controls.Add(lv);
         }
     }
