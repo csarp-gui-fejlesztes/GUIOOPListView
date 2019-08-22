@@ -23,6 +23,8 @@ namespace ListViewDynamically
             lv.Size = new Size(600, 480);
             lv.FullRowSelect = true;
 
+            this.Size = new Size(1024, 768);
+
             Controls.Add(lv);
         }
     }
