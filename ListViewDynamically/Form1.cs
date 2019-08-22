@@ -32,6 +32,12 @@ namespace ListViewDynamically
             lv.Columns[1].Width = 180;
             lv.Columns[2].Width = 140;
 
+            ListViewItem lvi = new ListViewItem("Pet");
+            //lvi.Text = "Pet";
+            lvi.SubItems.Add("kutya");
+            lvi.SubItems.Add("9");
+            lv.Items.Add(lvi);
+
             Controls.Add(lv);
         }
     }
