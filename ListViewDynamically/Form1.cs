@@ -14,6 +14,7 @@ namespace ListViewDynamically
     {
         ListView lv;
         TextBox eredmenyTextBox;
+        TextBox atlagTextBox;
 
         public Form1()
         {
@@ -47,12 +48,36 @@ namespace ListViewDynamically
 
             eredmenyTextBox = new TextBox();
             eredmenyTextBox.Location = new Point(12, 600);
-            eredmenyTextBox.Size = new Size(600,12);
+            eredmenyTextBox.Size = new Size(400,12);
             Controls.Add(eredmenyTextBox);
+
+            atlagTextBox = new TextBox();
+            atlagTextBox.Location = new Point(450, 600);
+            atlagTextBox.Size = new Size(150, 12);
+            atlagTextBox.ReadOnly = true;
+            Controls.Add(atlagTextBox);
+
+            Button szamolAtlag = new Button();
+            szamolAtlag.Location = new Point(620, 600);
+            szamolAtlag.Size = new Size(150, 24);
+            szamolAtlag.Text = "Számol életkor átlagot";
+            szamolAtlag.Click += SzamolAtlag_Click;
+            Controls.Add(szamolAtlag);
 
             Controls.Add(lv);
 
             lv.SelectedIndexChanged += Lv_SelectedIndexChanged;
+        }
+
+        private void SzamolAtlag_Click(object sender, EventArgs e)
+        {
+            double szum = 0;
+            foreach (ListViewItem lvi in lv.Items)
+            {
+                szum += Convert.ToDouble(lvi.SubItems[2].Text);
+            }
+            double atlag = szum / lv.Items.Count;
+            atlagTextBox.Text = atlag.ToString();
         }
 
         private void Lv_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,5 +92,7 @@ namespace ListViewDynamically
             eredmeny.Append(lv.SelectedItems[0].SubItems[2].Text);
             eredmenyTextBox.Text = eredmeny.ToString();
         }
+
+
     }
 }
