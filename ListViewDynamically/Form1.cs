@@ -51,6 +51,21 @@ namespace ListViewDynamically
             Controls.Add(eredmenyTextBox);
 
             Controls.Add(lv);
+
+            lv.SelectedIndexChanged += Lv_SelectedIndexChanged;
+        }
+
+        private void Lv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StringBuilder eredmeny = new StringBuilder();
+            if (lv.SelectedItems.Count == 0)
+                return;
+            eredmeny.Append(lv.SelectedItems[0].Text);
+            eredmeny.Append(" ");
+            eredmeny.Append(lv.SelectedItems[0].SubItems[1].Text);
+            eredmeny.Append(" ");
+            eredmeny.Append(lv.SelectedItems[0].SubItems[2].Text);
+            eredmenyTextBox.Text = eredmeny.ToString();
         }
     }
 }
