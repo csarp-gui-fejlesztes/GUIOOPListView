@@ -42,7 +42,9 @@ namespace ListViewDynamically
             lv.Items.Add(lvi);
 
             ListViewItem lvi2 = new ListViewItem(new string[] { "Buksi", "kutya", "11" });
+            ListViewItem lvi3 = new ListViewItem(new string[] { "Mirmur", "macska", "6" });
             lv.Items.Add(lvi2);
+            lv.Items.Add(lvi3);
 
             lv.GridLines = true;
 
@@ -60,18 +62,40 @@ namespace ListViewDynamically
             Button szamolAtlag = new Button();
             szamolAtlag.Location = new Point(620, 600);
             szamolAtlag.Size = new Size(150, 24);
-            szamolAtlag.Text = "Számol életkor átlagot";
+            szamolAtlag.Text = "Számol életkor átlagot...";
             szamolAtlag.Click += SzamolAtlag_Click;
             Controls.Add(szamolAtlag);
+
+            Button torolSor = new Button();
+            torolSor.Location = new Point(620, 630);
+            torolSor.Size = new Size(150, 24);
+            torolSor.Text = "Töröl sort...";
+            torolSor.Click += TorolSor_Click;
+            Controls.Add(torolSor);
 
             Controls.Add(lv);
 
             lv.SelectedIndexChanged += Lv_SelectedIndexChanged;
         }
 
+        private void TorolSor_Click(object sender, EventArgs e)
+        {
+            if (lv.SelectedItems.Count == 0)
+                return;
+            foreach (ListViewItem listViewItem in lv.SelectedItems)
+            {
+                lv.Items.Remove(listViewItem);
+            }
+        }
+
         private void SzamolAtlag_Click(object sender, EventArgs e)
         {
             double szum = 0;
+            if (lv.SelectedItems.Count == 0)
+            {
+                atlagTextBox.Text = szum.ToString();
+                return;
+            }
             foreach (ListViewItem lvi in lv.Items)
             {
                 szum += Convert.ToDouble(lvi.SubItems[2].Text);
